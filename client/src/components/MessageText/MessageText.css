@@ -1,0 +1,43 @@
+.MessageTextContainer{
+    background: #7266ba;
+    color: #ffffff;
+    /* border-radius: 8px 8px 0 8px; */
+    border-radius: 8px;
+    position: relative;
+    max-width: 600px;
+    overflow: hidden;
+    clear: both;
+    padding: 0 58px 0 0;
+    text-align: right;
+    /* float: right; */
+    min-width: 40px;
+    text-align: center;
+}
+
+.MessageText{
+    padding: 12px;
+    font-size: 16px;
+    line-height: 26px;
+    position: relative;
+}
+/* 
+.MessageTextContainer:before {
+    right: -30px;
+    border-left-color: #7266ba;
+    border-left-width: 12px;
+}
+
+.MessageTextContainer:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    border: 18px solid #7266ba;
+
+} */
+    /* border-bottom-width: 0; */
+/* todo-ortal change names */
+
+/* .MessageTextContainer { //another message color
+    background: #ebebeb;
+    color: #333333; */

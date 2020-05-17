@@ -1,0 +1,26 @@
+
+.MessageBar{
+    position: fixed; 
+    bottom: 0; 
+    padding: 3px;
+    /* width: 100%; */
+    padding: 3px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin: auto;
+    left: 0;
+    right: 0;
+    background: #fff;
+}
+
+/* todo-ortal change to components? */
+
+input {  
+    padding: 1em; 
+}
+button { 
+    padding: 1em; 
+    background: rgb(130, 224, 255);
+    border: none; 
+    padding: 10px;
+}

@@ -1,0 +1,24 @@
+.Message{
+    position: relative;
+    max-width: 600px;
+    overflow: hidden;
+    clear: both;
+    padding: 0 58px 0 0;
+    text-align: right;
+    /* float: right; */
+    margin-bottom: 2em;
+}
+
+.Body{
+    display: flex;
+}
+
+h3{
+    /* margin: 0;
+    padding: 0;
+    text-align: center; */
+}
+
+.Header{
+    display: flex;
+}
