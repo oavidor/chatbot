@@ -7,8 +7,9 @@ io.on("connection", socket => {
   const { id } = socket.client;
   console.log(`User Connected: ${id}`);
 
-  socket.on("chat message", ({ nickname, msg }) => {
-    io.emit("chat message", { nickname, msg });
+  socket.on("chat message", ({ nickname, msg, type, avatarImgSrc }) => {
+    console.log(avatarImgSrc);
+    io.emit("chat message", { nickname, msg, type: 'user' , avatarImgSrc});
   
     const request = {
       session: sessionPath,
@@ -31,7 +32,7 @@ io.on("connection", socket => {
         } else {
             console.log(`  No intent matched.`);
         }
-        io.emit("chat message", { nickname: 'bot', msg: result.fulfillmentText });
+        io.emit("chat message", { nickname: 'bot', msg: result.fulfillmentText , type: 'bot', avatarImgSrc: '/assets/bot_avatar.png'});
     })
     .catch(err => {
         console.error('ERROR:', err);
