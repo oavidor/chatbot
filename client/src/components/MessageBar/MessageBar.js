@@ -12,19 +12,36 @@ const socket = io.connect("http://localhost:8000");
 class MessageBar extends Component {
   constructor() {
     super();
-    this.state = { msg: "",  nickname: "Zoee" };
+    this.state = { msg: "",  nickname: "", type: 'user',  avatarImgSrc: ''};
   }
+
+  componentDidMount(){
+    console.log(this.props.nickname)
+    this.setState({nickname: this.props.user.nickName});
+    this.setState({avatarImgSrc: this.props.user.avatarImgSrc});
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(this.props !== prevProps){
+      this.setState({nickname: this.props.user.nickName});
+      this.setState({avatarImgSrc: this.props.user.avatarImgSrc});
+    }
+  }
+
 
   onTextChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   onMessageSubmit = () => {
-    const { nickname, msg } = this.state;
+    console.log(this.state.avatarImgSrc);
+    const { nickname, msg ,type, avatarImgSrc} = this.state;
     if(!msg){
       return false; //todo-ortal add validation message and add 
     }
-    socket.emit("chat message", { nickname, msg });
+    socket.emit("chat message", { nickname, msg, type, avatarImgSrc }); //todo-ortal remove and fix
+    // console.log(this.props.user.nickname);
+    // socket.emit("chat message", { nickname: this.props.user.nickname, msg });
     this.setState({ msg: "" });
   };
 
@@ -37,12 +54,6 @@ class MessageBar extends Component {
   render() {
     return (
       <div className="MessageBar">
-        {/* <input id="m" autoComplete="off"
-         name="msg"
-         onChange={e => this.onTextChange(e)}
-         value={this.state.msg}
-         onKeyDown={this.handleKeyDown}
-        /> */}
          <TextField 
          id="outlined-search"  type="search" variant="outlined" fullWidth color="primary"
          id="m" autoComplete="off"
@@ -57,6 +68,7 @@ class MessageBar extends Component {
         color="primary"
         // className={classes.button}
         endIcon={<SendIcon>send</SendIcon>}
+        onClick={this.onMessageSubmit}
       >
         Send
       </Button>
