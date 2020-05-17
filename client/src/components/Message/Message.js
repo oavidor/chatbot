@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grow from '@material-ui/core/Grow';
+import Fade from '@material-ui/core/Fade';
 import './Message.css';
 import AvatarImg from '../AvatarImg/AvatarImg';
 import MessageText from '../MessageText/MessageText';
@@ -19,7 +20,7 @@ export default function Message(props) {
        <Grow
           in={true}
           style={{ transformOrigin: '0 0 0' }}
-          {...(true ? { timeout: 3000 } : {})}
+          {...(true ? { timeout: 1000 } : {})}
         >
             <div className="Message">
                 <div className="Header">

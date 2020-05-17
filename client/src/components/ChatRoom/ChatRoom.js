@@ -35,7 +35,7 @@ class ChatRoom extends Component {
     }
 
     scrollToBottom = () => {
-      this.messagesEnd.scrollIntoView();
+      this.messagesEnd.scrollIntoView({behavior: "smooth", block: "start"});
     }
   
     render() {

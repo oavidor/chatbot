@@ -31,7 +31,10 @@ io.on("connection", socket => {
         } else {
             console.log(`  No intent matched.`);
         }
-        io.emit("chat message", { nickname: 'bot', msg: result.fulfillmentText });
+        setTimeout(function(){ 
+          io.emit("chat message", { nickname: 'bot', msg: result.fulfillmentText });
+        }, 500);
+        
     })
     .catch(err => {
         console.error('ERROR:', err);
