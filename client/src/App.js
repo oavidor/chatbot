@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './App.css';
 import ChatRoom from './components/ChatRoom/ChatRoom';
+import FullScreenDialog from "./components/Dialog/FullScreenDialog";
 
 //todo-ortal move to header
 import AppBar from '@material-ui/core/AppBar';
@@ -8,15 +9,71 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import AvatarImg from './components/AvatarImg/AvatarImg';
 
+import Welcome from './components/Welcome/Welcome';
+import UserContext from './context/userContext'
+
+import Slide from '@material-ui/core/Slide';
+
 //todo-ortal move?
 import DialogContent from '@material-ui/core/DialogContent';
 
+
 class App extends Component {
+
+  state = {
+    openDialog : false,
+    avatarImgSrc : '',
+    nickName: ''
+  }
+
+  closeDialog = () => {
+    this.setState({
+        openDialog: false
+    })
+  };
+
+  openDialog = (user) => { //todo-ortal //change to open chat
+    console.log(user);
+      this.setState({
+          openDialog: true, avatarImgSrc: user.avatarImgSrc,  nickName: user.nickName
+      })
+  };
+
+  // setUser = (user) => {
+  //   this.setState({ avatarImgSrc: user.avatarImgSrc,  nickName: user.nickName});
+  // }; //todo-ortal set user
+
 
   render() {
     return (
       <div style={{minWidth: "320px"}}>
-     <AppBar  position="fixed">
+      <div>
+      <AppBar  position="fixed">
+      <Toolbar>
+        <Typography  variant="h6" noWrap>
+          Welcome!
+        </Typography>
+      </Toolbar>
+    </AppBar>
+    <Toolbar />
+    <DialogContent>
+      <Welcome openDialog={(user)=>{this.openDialog(user)}} />
+    <FullScreenDialog   onClose={this.closeDialog}  open={this.state.openDialog} >
+      <ChatRoom  user={{avatarImgSrc: this.state.avatarImgSrc,  nickName: this.state.nickName}}/>
+    </FullScreenDialog>
+    </DialogContent> 
+      </div>
+      {/* } */}
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+  {/* <AppBar  position="fixed">
         <Toolbar>
           <AvatarImg src="/assets/bot_avatar.png" size="Small" shape="Round" />
           <Typography  variant="h6" noWrap>
@@ -26,10 +83,4 @@ class App extends Component {
       </AppBar>
       <DialogContent>
           <ChatRoom />
-      </DialogContent>
-      </div>
-    );
-  }
-}
-
-export default App;
+      </DialogContent> */}
