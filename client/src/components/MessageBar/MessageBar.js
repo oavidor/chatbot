@@ -16,7 +16,6 @@ class MessageBar extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props.nickname)
     this.setState({nickname: this.props.user.nickName});
     this.setState({avatarImgSrc: this.props.user.avatarImgSrc});
   }
@@ -55,21 +54,18 @@ class MessageBar extends Component {
     return (
       <div className="MessageBar">
          <TextField 
-         id="outlined-search"  type="search" variant="outlined" fullWidth color="primary"
-         id="m" autoComplete="off"
+         id="msg"  type="search" variant="outlined" fullWidth color="primary"
          name="msg"
          onChange={e => this.onTextChange(e)}
          value={this.state.msg}
          onKeyDown={this.handleKeyDown}
-         />
-        {/* <button onClick={this.onMessageSubmit}  >Send</button> */}
+         autoFocus
+         inputRef={input => input && input.focus()}/>
         <Button
         variant="contained"
         color="primary"
-        // className={classes.button}
         endIcon={<SendIcon>send</SendIcon>}
-        onClick={this.onMessageSubmit}
-      >
+        onClick={this.onMessageSubmit}>
         Send
       </Button>
       </div>

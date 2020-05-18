@@ -33,7 +33,7 @@ io.on("connection", socket => {
         } else {
             console.log(`  No intent matched.`);
         }
-        io.emit("chat message", { nickname: 'zoye-bot', msg: result.fulfillmentText , type: 'bot', avatarImgSrc: '/assets/bot_avatar.png'});
+        io.emit("chat message", { nickname: 'Zoye Bot', msg: result.fulfillmentText , type: 'bot', avatarImgSrc: '/assets/bot_avatar.png'});
     })
     .catch(err => {
         console.error('ERROR:', err);

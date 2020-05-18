@@ -1,4 +1,4 @@
-.AvatarImg{
+.AvatarImg {
     vertical-align: middle;
     width: 50px;
     height: 50px;
@@ -6,18 +6,17 @@
     margin-top: -12px;
 }
 
-.Small{
-    /* todo-ortal remove? */
+.Small {
     width: 50px;
     height: 50px;
 }
 
-.Medium{
+.Medium {
     width: 100px;
     height: 100px;
 }
 
-.Big{
+.Big {
     width: 150px;
     height: 150px;
 }

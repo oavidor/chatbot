@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import AvatarImg from './components/AvatarImg/AvatarImg';
 
 import Welcome from './components/Welcome/Welcome';
-import UserContext from './context/userContext'
+
 
 import Slide from '@material-ui/core/Slide';
 

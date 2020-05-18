@@ -6,8 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import AvatarsImgs from "../AvatarsImgs/AvatarsImgs";
 import Typography from '@material-ui/core/Typography';
 
-import UserContext from '../../context/userContext';
-
 class Welcome extends Component {
 
     state = {
@@ -24,8 +22,11 @@ class Welcome extends Component {
     };
 
     enterChat = () => {
-        this.props.openDialog({avatarImgSrc: this.state.avatarImgSrc, nickName: this.state.nickName});
+        let avatarImgSrc = this.state.avatarImgSrc ? this.state.avatarImgSrc : '/assets/avatars/avatar2.png'; //todo-ortal use default in one place
+        let nickName = this.state.nickName ? this.state.nickName : 'Guest';
+        this.props.openDialog({avatarImgSrc: avatarImgSrc, nickName: nickName});
     };
+
 
   render() {
     return (
@@ -34,10 +35,8 @@ class Welcome extends Component {
           direction="column"
           justify="space-evenly"
           alignItems="center"
-          style={{ marginTop: "3em", height:"400px"}}
-          // spacing={3}
-          >
-             <Typography  variant="h3" gutterBottom>
+          style={{ marginTop: "3em", height:"400px"}}>
+             <Typography  variant="h3">
                 Welcome!
             </Typography>
             <Typography  variant="body1" gutterBottom>
@@ -47,7 +46,7 @@ class Welcome extends Component {
               name="nickName"
               onChange={e => this.onTextChange(e)}
               value={this.state.nickName}
-              // style={{marginTop: "1em", marginBottom: "1em"}}
+              autoFocus
             />
             <AvatarsImgs chooseAvatar={(event)=>{this.chooseAvatar(event)}}/>
             <Button
@@ -55,8 +54,7 @@ class Welcome extends Component {
                 variant="contained"
                 color="primary"
                 onClick={this.enterChat}
-                style={{ padding: "0.5em 7em", borderRadius: "8px"}}
-                >
+                style={{ padding: "0.5em 7em", borderRadius: "8px"}}>
                 sign
                 </Button>
         </Grid>
