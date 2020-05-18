@@ -2,35 +2,27 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import { Button } from '@material-ui/core';
-import  './AvatarsImages.css'; //use css module?
 
 const images = [
   {
-    id: '1',
     url: "/assets/avatars/avatar2.png",
     alt: "avatar2",
-    class: 'grow'
   },
   {
-    id: '2',
     url: "/assets/avatars/avatar3.png",
     alt: "avatar3",
-    class: 'grow'
   },
   {
-    id: '3',
     url: "/assets/avatars/avatar4.png",
     alt: "avatar4",
-    class: 'grow'
   },
   {
-    id: '4',
     url: "/assets/avatars/avatar5.png",
     alt: "avatar5",
-    class: 'grow'
   },
   
 ];
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -42,20 +34,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AvatarsImgs(props) {
   const classes = useStyles(); //todo-ortal use loop
-  const [activeIdx, setActive] = React.useState(0);
 
-  const chooseAvatar = (event, imageIdx) => {
-    images[activeIdx].class = 'grow'; //todo-ortal bad code
-    setActive(imageIdx);
-    images[imageIdx].class = [ images[imageIdx].class, "selected"].join(' ');
-    props.chooseAvatar(event);
-  };
   
   return (
     <div className={classes.root}>
-      {images.map((image,idx) => (   
-      <Avatar key={image.id} alt={image.alt} src={image.url} onClick={(event) => chooseAvatar(event, idx)} className={image.class}/>
+      {images.map(image => (   
+      <Avatar alt="Avatar1" src="/assets/avatars/avatar1.png" onClick={props.chooseAvatar} className={"grow"}/>
       ))}
+      <Button variant="contained" color="primary" style={{borderRadius: "50%"}}><Avatar alt="Avatar1" src="/assets/avatars/avatar1.png" onClick={props.chooseAvatar} /></Button>
+      <Avatar alt="Avatar2 Howard" src="/assets/avatars/avatar2.png"  onClick={props.chooseAvatar}/>
+      <Avatar alt="Avatar3 Baker" src="/assets/avatars/avatar3.png" onClick={props.chooseAvatar}/>
+      <Avatar alt="Avatar4" src="/assets/avatars/avatar4.png" onClick={props.chooseAvatar}/>
+      <Avatar alt="Avatar5 Howard" src="/assets/avatars/avatar5.png" onClick={props.chooseAvatar}/>
     </div>
   );
 }

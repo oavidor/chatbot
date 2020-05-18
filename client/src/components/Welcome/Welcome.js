@@ -11,9 +11,9 @@ import UserContext from '../../context/userContext';
 class Welcome extends Component {
 
     state = {
-        avatarImgSrc : '',
+        avatarImgSrc : '/assets/avatars/avatar2.png',
         nickName: ''
-      }
+    }
 
     onTextChange = e => {
         this.setState({ [e.target.name]: e.target.value });
@@ -30,26 +30,32 @@ class Welcome extends Component {
   render() {
     return (
         <Grid
-  container
-  direction="column"
-  justify="space-between"
-  alignItems="center"
->
-            {/* <h3 style={{textAlign: 'center'}}>Choose nickname and avatar</h3> */}
-            <Typography  variant="h6" gutterBottom>
+          container
+          direction="column"
+          justify="space-evenly"
+          alignItems="center"
+          style={{ marginTop: "3em", height:"400px"}}
+          // spacing={3}
+          >
+             <Typography  variant="h3" gutterBottom>
+                Welcome!
+            </Typography>
+            <Typography  variant="body1" gutterBottom>
                 Choose Nickname and Avatar
             </Typography>
-            <TextField id="outlined-basic" label="Outlined" variant="outlined" 
-              id="m" autoComplete="off"
+            <TextField id="nickName" label="Nick Name" variant="outlined" 
               name="nickName"
               onChange={e => this.onTextChange(e)}
               value={this.state.nickName}
+              // style={{marginTop: "1em", marginBottom: "1em"}}
             />
-            <AvatarsImgs chooseAvatar={(event)=>{this.chooseAvatar(event)}} />
+            <AvatarsImgs chooseAvatar={(event)=>{this.chooseAvatar(event)}}/>
             <Button
+                size="large"
                 variant="contained"
                 color="primary"
                 onClick={this.enterChat}
+                style={{ padding: "0.5em 7em", borderRadius: "8px"}}
                 >
                 sign
                 </Button>

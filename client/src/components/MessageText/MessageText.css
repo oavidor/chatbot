@@ -1,7 +1,6 @@
 .MessageTextContainer{
     background: #7266ba;
     color: #ffffff;
-    /* border-radius: 8px 8px 0 8px; */
     border-radius: 8px;
     position: relative;
     max-width: 600px;
@@ -9,17 +8,26 @@
     clear: both;
     padding: 0 58px 0 0;
     text-align: right;
-    /* float: right; */
     min-width: 40px;
-    text-align: center;
-}
-
-.MessageText{
+    text-align: left;
     padding: 12px;
     font-size: 16px;
     line-height: 26px;
     position: relative;
 }
+
+.time-right {
+    float: right;
+    color: #aaa;
+    text-align: right;
+  }
+
+/* .MessageText{
+    padding: 12px;
+    font-size: 16px;
+    line-height: 26px;
+    position: relative;
+} */
 /* 
 .MessageTextContainer:before {
     right: -30px;

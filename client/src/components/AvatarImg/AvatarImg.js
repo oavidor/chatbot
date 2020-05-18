@@ -1,7 +1,7 @@
 //props: shape: round, square, radius, size: small, big, medium, src? //todo-ortal remove
 import React from 'react';
 // import burgerLogo from '../../assets/images/burger-logo.png'; //todo-ortal remove
-import classes from './AvatarImg.css'; //use css module?
+import  './AvatarImg.css'; //use css module?
 
 
 const AvatarImg = (props) => (

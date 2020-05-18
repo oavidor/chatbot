@@ -22,8 +22,8 @@ class App extends Component {
 
   state = {
     openDialog : false,
-    avatarImgSrc : '',
-    nickName: ''
+    avatarImgSrc : '/assets/avatars/avatar2.png',
+    nickName: 'Guest'
   }
 
   closeDialog = () => {
@@ -39,19 +39,15 @@ class App extends Component {
       })
   };
 
-  // setUser = (user) => {
-  //   this.setState({ avatarImgSrc: user.avatarImgSrc,  nickName: user.nickName});
-  // }; //todo-ortal set user
-
-
   render() {
     return (
       <div style={{minWidth: "320px"}}>
       <div>
       <AppBar  position="fixed">
-      <Toolbar>
-        <Typography  variant="h6" noWrap>
-          Welcome!
+      <Toolbar style={{textAlign:"center"}}>
+      <AvatarImg src={'/assets/bot_avatar.png'} size="Small" shape="Round"/>
+        <Typography  variant="h6" noWrap style={{textAlign:"center"}}>
+          Zoey Chat Bot
         </Typography>
       </Toolbar>
     </AppBar>
@@ -59,11 +55,12 @@ class App extends Component {
     <DialogContent>
       <Welcome openDialog={(user)=>{this.openDialog(user)}} />
     <FullScreenDialog   onClose={this.closeDialog}  open={this.state.openDialog} >
-      <ChatRoom  user={{avatarImgSrc: this.state.avatarImgSrc,  nickName: this.state.nickName}}/>
+      <ChatRoom  
+        user={{avatarImgSrc: this.state.avatarImgSrc,  nickName: this.state.nickName}}
+        />
     </FullScreenDialog>
     </DialogContent> 
       </div>
-      {/* } */}
       </div>
     );
   }

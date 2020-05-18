@@ -4,8 +4,6 @@ import Message from '../Message/Message';
 import MessageBar from '../MessageBar/MessageBar';
 import io from "socket.io-client";
 
-
-import UserContext from '../../context/userContext';
 const socket = io.connect("http://localhost:8000");
 
 class ChatRoom extends Component {
@@ -13,8 +11,6 @@ class ChatRoom extends Component {
       super();
       this.state = { msg: "", chat: [], nickname: "", type: '', avatarImgSrc: ''};
     }
-  
-    static contextType = UserContext;
 
     componentDidMount() { //todo-ortal take outside to an action?
 
