@@ -1,3 +1,4 @@
+
 const express = require("express");
 const app = express();
 const server = require("http").Server(app);
@@ -32,7 +33,14 @@ io.on("connection", socket => {
         } else {
             console.log(`  No intent matched.`);
         }
+        io.emit("chat message", { nickname: 'zoye-bot', msg: result.fulfillmentText , type: 'bot', avatarImgSrc: '/assets/bot_avatar.png'});
+    })
+    .catch(err => {
+        console.error('ERROR:', err);
+    });
+    
   });
+
 });
 
 const PORT = process.env.PORT || 8000;
