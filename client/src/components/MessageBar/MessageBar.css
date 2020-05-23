@@ -1,24 +1,38 @@
 
-.MessageBar {
+.message-bar {
     position: fixed;
     bottom: 0;
-    padding: 3px;
-    /* width: 100%; */
-    padding: 3px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    padding: 0.5em 1em;
     margin: auto;
     left: 0;
     right: 0;
     background: #fff;
 }
 
-input {
-    padding: 1em;
+.message-bar-container{
+    border-color: rgba(var(--b6a,219,219,219),1);
+    border-radius: 22px;
+    border-width: 1px;
+    border-style: solid;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin: auto;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 0.5em 1em;
 }
-button {
-    padding: 1em;
-    background: rgb(130, 224, 255);
+
+.message-bar-input{
+    outline: none;
     border: none;
-    padding: 10px;
+	flex: 1 1 auto;
+}
+
+.message-bar-button{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: 0;
+    justify-self: flex-end;
 }

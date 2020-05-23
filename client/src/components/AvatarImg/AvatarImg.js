@@ -2,7 +2,7 @@ import React from 'react';
 import './AvatarImg.css';
 
 const AvatarImg = (props) => (
-    <div className="AvatarImg">
+    <div className={["AvatarImg", props.position].join(' ')}>
         <img
             src={props.src}
             alt="Avatar"

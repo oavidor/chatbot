@@ -1,14 +1,16 @@
 .AvatarImg {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
     margin-right: 0.3em;
-    margin-top: -12px;
+    align-self: flex-end;
 }
 
 .Small {
     width: 50px;
     height: 50px;
+}
+
+.XS {
+    width: 40px;
+    height: 40px;
 }
 
 .Medium {
@@ -23,4 +25,13 @@
 
 .Round {
     border-radius: 50%;
+}
+
+.right{
+    order: 2;
+}
+
+.up{
+    margin-top: -12px;
+    align-self: center;
 }

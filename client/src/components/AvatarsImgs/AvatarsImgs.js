@@ -38,8 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AvatarsImgs(props) {
     const classes = useStyles();
-    const [activeIdx,
-        setActive] = React.useState(0);
+    const [activeIdx, setActive] = React.useState(0);
 
     const chooseAvatar = (event, imageIdx) => {
         images[activeIdx].class = 'grow'; //todo-ortal bad code

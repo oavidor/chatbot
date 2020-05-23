@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import './MessageBar.css';
-import io from "socket.io-client";
-import TextField from '@material-ui/core/TextField';
-
-import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
+import socket from '../../Socket'
 
-
-const socket = io.connect("http://localhost:8000");
 
 class MessageBar extends Component {
   constructor() {
@@ -27,21 +22,8 @@ class MessageBar extends Component {
     }
   }
 
-
   onTextChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-  };
-
-  onMessageSubmit = () => {
-    console.log(this.state.avatarImgSrc);
-    const { nickname, msg ,type, avatarImgSrc} = this.state;
-    if(!msg){
-      return false; //todo-ortal add validation message and add 
-    }
-    socket.emit("chat message", { nickname, msg, type, avatarImgSrc }); //todo-ortal remove and fix
-    // console.log(this.props.user.nickname);
-    // socket.emit("chat message", { nickname: this.props.user.nickname, msg });
-    this.setState({ msg: "" });
   };
 
   handleKeyDown = (e) => {
@@ -50,24 +32,37 @@ class MessageBar extends Component {
     }
   }
 
+  onMessageSubmit = () => {
+    const { nickname, msg ,type, avatarImgSrc} = this.state;
+    if(!msg){
+      return false;
+    }
+    socket.emit("chat message", { nickname, msg, type, avatarImgSrc }); //todo-ortal remove and fix
+    this.setState({ msg: "" });
+  };
+
+  
+
   render() {
     return (
-      <div className="MessageBar">
-         <TextField 
-         id="msg"  type="search" variant="outlined" fullWidth color="primary"
-         name="msg"
-         onChange={e => this.onTextChange(e)}
-         value={this.state.msg}
-         onKeyDown={this.handleKeyDown}
-         autoFocus
-         inputRef={input => input && input.focus()}/>
-        <Button
-        variant="contained"
-        color="primary"
-        endIcon={<SendIcon>send</SendIcon>}
-        onClick={this.onMessageSubmit}>
-        Send
-      </Button>
+      <div className="message-bar">
+        <div  className="message-bar-container" >
+          <input 
+            id="msg" 
+            name="msg"
+            onChange={e => this.onTextChange(e)}
+            value={this.state.msg}
+            onKeyDown={this.handleKeyDown}
+            autoFocus
+            className={"message-bar-input"}
+            placeholder="Type your message..."
+            autoComplete="off"
+            ref={input => input && input.focus()}
+          />
+           <button onClick={this.onMessageSubmit} className={"message-bar-button"}>
+              <SendIcon color="primary" />  
+           </button>
+        </div>
       </div>
     );
   }

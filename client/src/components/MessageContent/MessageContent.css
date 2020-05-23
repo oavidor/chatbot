@@ -1,24 +1,47 @@
 .MessageTextContainer{
-    background: #7266ba;
-    color: #ffffff;
-    border-radius: 8px;
+    background-color: #efefef;
+    color: #000;
+    border-radius: 22px;
+    border-bottom-left-radius: 0;
     position: relative;
     max-width: 600px;
     overflow: hidden;
-    clear: both;
-    padding: 0 58px 0 0;
+    /* padding: 0 58px 0 0; */
     text-align: right;
     min-width: 40px;
     text-align: left;
-    padding: 12px;
-    font-size: 16px;
-    line-height: 26px;
+    /* font-size: 16px; */
+    font-size: 0.95rem;
+    /* line-height: 26px; */
     position: relative;
+    padding: 0.5em 1em;
+    border: 1px solid rgba(var(--bb2,239,239,239),1);
 }
 
-.time-right {
-    float: right;
+.MessageTextContainer.right{
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 22px;
+    background: #7266ba;
+    color: #fff;
+}
+
+.right .time{
+    float: left;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.time {
+    float: inherit;
     color: #aaa;
     text-align: right;
     font-size: 11px;
-  }
+    padding-top: 4px;
+    margin-right: 20px;
+}
+
+.content-title{
+      font-size: 14px;
+      font-weight: bold;
+      color: black;
+}

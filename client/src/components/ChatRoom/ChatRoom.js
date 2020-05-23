@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import './ChatRoom.css';
 import Message from '../Message/Message';
 import MessageBar from '../MessageBar/MessageBar';
-import io from "socket.io-client";
-
-const socket = io.connect("http://localhost:8000");
+import socket from '../../Socket'
 
 class ChatRoom extends Component {
     constructor() {
@@ -39,7 +37,6 @@ class ChatRoom extends Component {
 
     componentDidUpdate() {
         this.scrollToBottom({behavior: "smooth"});
-        console.log(this.props.user);
     }
 
     handleNavigation = (e) => { //todo-ortal remove
@@ -55,7 +52,7 @@ class ChatRoom extends Component {
 
     renderChat() {
         const {chat} = this.state;
-        console.log(chat);
+
         return chat.map(({
             nickname,
             msg,
