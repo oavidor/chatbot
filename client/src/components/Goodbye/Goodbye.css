@@ -1,0 +1,10 @@
+
+.goodbye {
+    animation-name: fadein;
+    animation-duration: 6s;
+  }
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

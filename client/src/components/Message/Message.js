@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Grow from '@material-ui/core/Grow';
-import Fade from '@material-ui/core/Fade';
 import AvatarImg from '../AvatarImg/AvatarImg';
 import MessageContent from '../MessageContent/MessageContent';
 import Delayed from '../Dlayed/Dlayed';
@@ -12,26 +11,27 @@ class Message extends Component {
         dispaly: true
     }
 
+    getPropsByUser = () => {
+        const bot = {waitBeforeShow: 500, position: "right"};
+        const user = {waitBeforeShow: 0, position: ""};
+        return this.props.userType === "bot" ? bot : user;
+    }
+
+
     render() {
-        //todo-ortal use one if //todo-ortal bot add different class right
-        let waitBeforeShow = this.props.userType === "bot"
-            ? 500
-            : 0;
-        let position = this.props.userType === "bot" ? "right" : "" //todo-ortal change to you
+        let userProps = this.getPropsByUser();
         return (
-            <Delayed waitBeforeShow={waitBeforeShow} scroll={this.props.scroll}>
+            <Delayed waitBeforeShow={userProps.waitBeforeShow} scroll={this.props.scroll}>
                 <Grow
                     in={this.state.dispaly}
-                    style={{
-                    transformOrigin: '0 0 0'
-                }}
+                    style={{transformOrigin: '0 0 0'}}
                     {...(true ? { timeout: 1000 } : {})}>
-                    <div className={ ["Message", position].join(' ')}>
-                            <AvatarImg src={this.props.avatarImgSrc} size="XS" shape="Round" position = {position}/>
+                    <div className={ ["Message", userProps.position].join(' ')}>
+                            <AvatarImg src={this.props.avatarImgSrc} size="XS" shape="Round" position = {userProps.position}/>
                             <MessageContent
                                 nickname={this.props.nickname}
                                 messageText={this.props.msg}
-                                position = {position}
+                                position = {userProps.position}
                                 />
                     </div>
                 </Grow>

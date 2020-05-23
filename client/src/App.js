@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import './App.css';
 import ChatRoom from './components/ChatRoom/ChatRoom';
 import FullScreenDialog from "./components/Dialog/FullScreenDialog";
-
-
 import Toolbar from '@material-ui/core/Toolbar';
-
 import Welcome from './components/Welcome/Welcome';
-
-//todo-ortal move?
+import Goodbye from './components/Goodbye/Goodbye';
 import DialogContent from '@material-ui/core/DialogContent';
 import Header from "./components/Header/Header";
 
@@ -16,20 +12,22 @@ import Header from "./components/Header/Header";
 class App extends Component {
 
   state = {
-    openDialog : false,
+    openChat : false,
     avatarImgSrc : '/assets/avatars/avatar2.png',
     nickName: 'Guest',
+    endChat: false
   }
 
-  closeDialog = () => {
+  closeChat = () => {
     this.setState({
-        openDialog: false
+        openChat: false,
+        endChat: true
     })
   };
 
-  openDialog = (user) => { //todo-ortal //change to open chat
+  openChat = (user) => {
       this.setState({
-          openDialog: true, avatarImgSrc: user.avatarImgSrc,  nickName: user.nickName
+          openChat: true, avatarImgSrc: user.avatarImgSrc,  nickName: user.nickName
       })
   };
 
@@ -40,8 +38,11 @@ class App extends Component {
           <Header title="Chat Bot"/>
           <Toolbar />
           <DialogContent>
-            <Welcome openDialog={(user)=>{this.openDialog(user)}} />
-            <FullScreenDialog  onClose={this.closeDialog}  open={this.state.openDialog} >
+            {
+              !this.state.endChat ? <Welcome openChat={(user)=>{this.openChat(user)}} />
+              : <Goodbye avatarImgSrc={this.state.avatarImgSrc} nickName={this.state.nickName} openChat={(user)=>{this.openChat(user)}}/>
+            }
+            <FullScreenDialog  onClose={this.closeChat}  open={this.state.openChat} >
               <ChatRoom  
                 user={{avatarImgSrc: this.state.avatarImgSrc,  nickName: this.state.nickName}}
                 />

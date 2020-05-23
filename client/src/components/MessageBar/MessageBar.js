@@ -37,12 +37,17 @@ class MessageBar extends Component {
     if(!msg){
       return false;
     }
-    socket.emit("chat message", { nickname, msg, type, avatarImgSrc }); //todo-ortal remove and fix
+    let msgId = Math.floor(Math.random() * 100);
+    socket.emit("chat message", { nickname, msg, type, avatarImgSrc, msgId });
     this.setState({ msg: "" });
   };
 
-  
+  handleTyping = (e) => {
+    const { nickname, msg ,type, avatarImgSrc} = this.state;
+    socket.emit("typing", {msg: e.target.value, nickname, type, avatarImgSrc});
+  }
 
+  
   render() {
     return (
       <div className="message-bar">
@@ -53,6 +58,7 @@ class MessageBar extends Component {
             onChange={e => this.onTextChange(e)}
             value={this.state.msg}
             onKeyDown={this.handleKeyDown}
+            onKeyUp={this.handleTyping}
             autoFocus
             className={"message-bar-input"}
             placeholder="Type your message..."

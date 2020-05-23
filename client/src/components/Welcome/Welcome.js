@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import AvatarsImgs from "../AvatarsImgs/AvatarsImgs";
 import Typography from '@material-ui/core/Typography';
-import TypingSvg from "../Typing/TypingSvg";
+
 
 class Welcome extends Component {
 
@@ -25,7 +25,7 @@ class Welcome extends Component {
     enterChat = () => {
         let avatarImgSrc = this.state.avatarImgSrc ? this.state.avatarImgSrc : '/assets/avatars/avatar2.png';
         let nickName = this.state.nickName ? this.state.nickName : 'Guest';
-        this.props.openDialog({avatarImgSrc: avatarImgSrc, nickName: nickName});
+        this.props.openChat({avatarImgSrc: avatarImgSrc, nickName: nickName});
     };
 
 

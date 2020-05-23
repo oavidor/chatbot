@@ -16,22 +16,9 @@ class ChatRoom extends Component {
         };
     }
 
-    componentDidMount() { //todo-ortal take outside to an action?
-
-        socket.on("chat message", ({nickname, msg, type, avatarImgSrc}) => {
-            this.setState({
-                chat: [
-                    ...this.state.chat, {
-                        nickname,
-                        msg,
-                        type,
-                        avatarImgSrc
-                    }
-                ]
-            });
-        });
+    componentDidMount() {
+        this.getMsg();
         this.scrollToBottom();
-        this.prev = window.scrollY;
         window.addEventListener('scroll', e => this.handleNavigation(e));
     }
 
@@ -39,53 +26,38 @@ class ChatRoom extends Component {
         this.scrollToBottom({behavior: "smooth"});
     }
 
-    handleNavigation = (e) => { //todo-ortal remove
-        const window = e.currentTarget;
-
-        if (this.prev > window.scrollY) {
-            console.log("scrolling up");
-        } else if (this.prev < window.scrollY) {
-            console.log("scrolling down");
-        }
-        this.prev = window.scrollY;
-    };
+    getMsg(){
+        socket.on("chat message", ({nickname, msg, type, avatarImgSrc}) => {
+            this.setState({chat: [ ...this.state.chat, {nickname, msg, type, avatarImgSrc}]});
+        });
+    }
 
     renderChat() {
         const {chat} = this.state;
 
-        return chat.map(({
-            nickname,
-            msg,
-            type,
-            avatarImgSrc
-        }, idx) => (<Message
-            msg={msg}
-            nickname={nickname}
-            userType={type}
-            key={idx}
-            scroll={this.scrollToBottom}
-            avatarImgSrc={avatarImgSrc}/>));
+        return chat.map(({nickname, msg,type,avatarImgSrc}, idx) => (
+            <Message
+                msg={msg}
+                nickname={nickname}
+                userType={type}
+                key={idx}
+                scroll={this.scrollToBottom}
+                avatarImgSrc={avatarImgSrc}/>
+        ));
     }
 
     scrollToBottom = () => {
-        this
-            .messagesEnd
-            .scrollIntoView({behavior: "smooth", block: "start"});
+        this.messagesEnd.scrollIntoView({behavior: "smooth", block: "start"});
     }
-    //todo-ortal nickname not realted to the messageBar
+
     render() {
         return (
             <div className="ChatRoom">
+                {/* <div className="chat"> */}
                 <div>{this.renderChat()}</div>
-
-                <div
-                    style={{
-                    marginBottom: "6em"
-                }}
-                    ref={(el) => {
-                    this.messagesEnd = el;
-                }}></div>
                 <MessageBar user={this.props.user}/>
+                <div style={{marginBottom: "10em", float: 'left'}} ref={(el) => {this.messagesEnd = el;}}></div>
+                {/* </div> */}
             </div>
         );
     }

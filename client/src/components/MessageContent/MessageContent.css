@@ -6,13 +6,10 @@
     position: relative;
     max-width: 600px;
     overflow: hidden;
-    /* padding: 0 58px 0 0; */
     text-align: right;
     min-width: 40px;
     text-align: left;
-    /* font-size: 16px; */
     font-size: 0.95rem;
-    /* line-height: 26px; */
     position: relative;
     padding: 0.5em 1em;
     border: 1px solid rgba(var(--bb2,239,239,239),1);
@@ -40,8 +37,14 @@
     margin-right: 20px;
 }
 
-.content-title{
-      font-size: 14px;
+.nickName{
+      color: #7266ba;
       font-weight: bold;
-      color: black;
+      margin-right: 6px;
+}
+
+.right .nickName{
+    color: #7266ba;
+    font-weight: bold;
+    margin-right: 6px;
 }

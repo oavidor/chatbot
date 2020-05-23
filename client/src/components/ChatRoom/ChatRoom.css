@@ -1,8 +1,6 @@
 .ChatRoom {
     margin-top: 1em;
     position: relative;
-    max-width: 950px;
+    max-width: 500px;
     margin: auto;
-    padding-left: 5em;
-    padding-right: 5em;
 }

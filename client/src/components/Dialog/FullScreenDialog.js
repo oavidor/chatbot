@@ -22,14 +22,13 @@ export default class FullScreenDialog extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener("resize", this.resize.bind(this));
-        this.resize();
+        this.setTransition();
+         
     }
     
-    resize() {
-        if(window.innerWidth > 760){
-            this.setState({transition: TransitionFade});
-        }
+    setTransition() {
+        let transition = window.innerWidth > 760 ? TransitionFade : TransitionSlide;
+        this.setState({transition: transition});
     }
 
     handleClose = () => {
@@ -49,6 +48,7 @@ export default class FullScreenDialog extends Component {
                     >
                     <Header title="Chat Room" closeBtn handleClose={this.handleClose}/>
                     <Toolbar />
+                    <div style={{marginBottom: '1em'}}></div>
                     <DialogContent>
                         {this.props.children}
                     </DialogContent>

@@ -13,7 +13,7 @@ export default function MessageContent(props) {
             width="150"
             height="150"
         />
-        : <Typography style={{fontSize: "0.85rem"}} className="MessageContent" variant="body1">{props.messageText}</Typography>;
+        : <Typography style={{fontSize: "0.9rem"}} className="MessageContent" variant="body1">{props.messageText}</Typography>;
         
     }
     
@@ -23,10 +23,10 @@ export default function MessageContent(props) {
                 container
                 className={ ["MessageTextContainer", props.position].join(' ')}
                 direction="column">
-                     {/* <div>{props.nickname}</div> */}
                     {renderContent()}
             </Grid>
-            <div className="time">{moment().format('h:mm a')}</div>
+            <div className="time">
+                <span className="nickName">{props.nickname}</span>{moment().format('h:mm a')}</div>
         </div>
     );
 }
