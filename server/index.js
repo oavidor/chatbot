@@ -8,21 +8,11 @@ io.on("connection", socket => {
   const { id } = socket.client;
   console.log(`User Connected: ${id}`);
 
-  socket.on("chat message", ({ nickname, msg, type, avatarImgSrc, isTyping }) => {
+  socket.on("chat message", ({ nickname, msg, type, avatarImgSrc}) => {
     console.log(avatarImgSrc);
     io.emit("chat message", { nickname, msg, type: 'user' , avatarImgSrc});
     messageBot(msg);
   });
-
-  socket.on("typing", ({ msg }) => {
-    console.log('typing');
-    if (msg) {
-      io.emit("typing", { typing: true});
-    } else {
-      io.emit("typing", { typing: false});
-    }
-  });
-
 
 });
 
