@@ -8,10 +8,25 @@ io.on("connection", socket => {
   const { id } = socket.client;
   console.log(`User Connected: ${id}`);
 
-  socket.on("chat message", ({ nickname, msg, type, avatarImgSrc }) => {
+  socket.on("chat message", ({ nickname, msg, type, avatarImgSrc, isTyping }) => {
     console.log(avatarImgSrc);
     io.emit("chat message", { nickname, msg, type: 'user' , avatarImgSrc});
-  
+    messageBot(msg);
+  });
+
+  socket.on("typing", ({ msg }) => {
+    console.log('typing');
+    if (msg) {
+      io.emit("typing", { typing: true});
+    } else {
+      io.emit("typing", { typing: false});
+    }
+  });
+
+
+});
+
+const messageBot = (msg) => {
     const request = {
       session: sessionPath,
       queryInput: {
@@ -38,10 +53,7 @@ io.on("connection", socket => {
     .catch(err => {
         console.error('ERROR:', err);
     });
-    
-  });
-
-});
+}
 
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));

@@ -13,9 +13,7 @@ class Delayed extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({hidden: false});
-            this
-                .props
-                .scroll();
+            this.props.scroll();
         }, this.props.waitBeforeShow);
     }
 

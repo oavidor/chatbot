@@ -23,7 +23,7 @@ class Welcome extends Component {
     };
 
     enterChat = () => {
-        let avatarImgSrc = this.state.avatarImgSrc ? this.state.avatarImgSrc : '/assets/avatars/avatar2.png'; //todo-ortal use default in one place
+        let avatarImgSrc = this.state.avatarImgSrc ? this.state.avatarImgSrc : '/assets/avatars/avatar2.png';
         let nickName = this.state.nickName ? this.state.nickName : 'Guest';
         this.props.openDialog({avatarImgSrc: avatarImgSrc, nickName: nickName});
     };

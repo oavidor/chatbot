@@ -23,15 +23,8 @@ export default function MessageContent(props) {
                 container
                 className={ ["MessageTextContainer", props.position].join(' ')}
                 direction="column">
+                     {/* <div>{props.nickname}</div> */}
                     {renderContent()}
-                    {/* <div>{props.nickname}</div> */}
-                    {/* {props.messageText.indexOf('img') > -1 ? 
-                            <img 
-                                src={props.messageText.replace('img_', '')}
-                                width="150"
-                                height="150"
-                            />
-                            : <Typography style={{fontSize: "0.85rem"}} className="MessageContent" variant="body1">{props.messageText}</Typography>} */}
             </Grid>
             <div className="time">{moment().format('h:mm a')}</div>
         </div>
