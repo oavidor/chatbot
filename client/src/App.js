@@ -33,7 +33,7 @@ class App extends Component {
   };
 
   openDialog = (user) => { //todo-ortal //change to open chat
-    console.log(user);
+
       this.setState({
           openDialog: true, avatarImgSrc: user.avatarImgSrc,  nickName: user.nickName
       })

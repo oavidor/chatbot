@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import AvatarsImgs from "../AvatarsImgs/AvatarsImgs";
 import Typography from '@material-ui/core/Typography';
+import TypingSvg from "../TypingSvg";
 
 class Welcome extends Component {
 
@@ -58,6 +59,7 @@ class Welcome extends Component {
                 sign
                 </Button>
         </Grid>
+                  
     );
   }
 }
