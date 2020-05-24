@@ -19,7 +19,6 @@ class ChatRoom extends Component {
     componentDidMount() {
         this.getMsg();
         this.scrollToBottom();
-        window.addEventListener('scroll', e => this.handleNavigation(e));
     }
 
     componentDidUpdate() {
